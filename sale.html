@@ -14,32 +14,6 @@
 <!--<![endif]-->
 
 <head>
-    <script>
-        (function(w, d, u) {
-            w.readyQ = [];
-            w.bindReadyQ = [];
-
-            function p(x, y) {
-                if (x == "ready") {
-                    w.bindReadyQ.push(y);
-                } else {
-                    w.readyQ.push(x);
-                }
-            };
-            var a = {
-                ready: p,
-                bind: p
-            };
-            w.$ = w.jQuery = function(f) {
-                if (f === d || f === u) {
-                    return a
-                } else {
-                    p(f)
-                }
-            }
-        })(window, document)
-
-    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no user-scalable=no">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="author" content="Alex Siritsa" />
@@ -303,24 +277,6 @@
 
         <div class="clear"></div>
 
-        <script>
-            $(document).ready(function() {
-                $('.logo').addClass('active');
-
-                $('.langs a.active').click(function() {
-                    if ($('.langs a.hiden').css('display') == 'none') {
-                        $('.langs a.hiden').fadeIn(350);
-                    } else {
-                        $('.langs a.hiden').fadeOut(200);
-                    }
-
-                    return false;
-                });
-
-            });
-
-
-        </script>
         <div class="clear"></div>
 
         <!---->
@@ -391,153 +347,6 @@
                                     <div class="btn filter">
                                         Фильтровать </div>
                                 </div>
-
-
-                                <script>
-                                    $(document).ready(function() {
-                                        $('select').styler({
-                                            fileBrowse: 'Выбрать',
-                                            onSelectOpened: function() {}
-                                        });
-
-                                        // Вывод активных пунктов фильтра
-                                        $(this).find(".jq-selectbox__dropdown li").removeClass('sel selected');
-                                        $(this).find('select .selected').addClass('sel selected');
-
-                                        $('.sorting-block .list-style noindex select').each(function() {
-                                            var text = $(this).find('.selected').html();
-                                            $(this).parent('div').find('.jq-selectbox__select').find('.jq-selectbox__select-text').html(text);
-                                        });
-
-                                        $('.attribute-checkbox.type-color').click(function() {
-                                            if ($(this).hasClass('selected')) {
-                                                $(this).removeClass('selected');
-                                            } else {
-                                                $(this).addClass('selected');
-                                            }
-
-                                            applyBtn();
-                                        });
-
-                                        // применить фильтр
-                                        $(".btn.filter").click(function() {
-                                            applyFilter();
-                                        });
-
-                                        $(".jq-selectbox__dropdown ul li").click(function() {
-                                            $(this).parent('ul').find('li').removeClass('selected');
-                                            $(this).parent('ul').find('li').attr('data-jqfs-class', 'attribute-checkbox');
-                                            $(this).parent('ul').parent('.jq-selectbox__dropdown').parent('.jq-selectbox').find('.select-styler').find('option').removeClass('selected');
-
-                                            $(this).addClass('selected');
-
-                                            applyBtn();
-                                        });
-
-
-                                        function implode(glue, pieces) { // Join array elements with a string
-                                            return ((pieces instanceof Array) ? pieces.join(glue) : pieces);
-                                        }
-                                    });
-
-                                    // Появление кнопки "Применить"
-                                    function applyBtn() {
-                                        $('.btn.filter').fadeIn(300);
-                                    }
-
-                                </script>
-
-
-                                <script type="text/javascript">
-                                    //    $(function(){
-                                    //        $('.selections-wrapper.active .title').click(function(){
-                                    //            if($(this).parent().hasClass('open')){
-                                    //                $(this).parent().removeClass('open');
-                                    //            }
-                                    //            else{
-                                    //                $(this).parent().addClass('open');
-                                    //            }
-                                    //        });
-                                    //
-                                    //        $(".attribute-checkbox").each(function(event){
-                                    //            var _this = $(this);
-                                    //            _this.find('.list').click(function(){
-                                    //                if(_this.hasClass('selected') == true) {
-                                    //                    _this.removeClass("selected");
-                                    //                } else {
-                                    //                    _this.addClass('selected');
-                                    //                }
-                                    //            })
-                                    //        });
-                                    //
-                                    //        $(".attribute-checkbox a").click(function(event){
-                                    //            event.preventDefault();
-                                    //            var _this = $(this);
-                                    //            //$(".hint-select").hide();
-                                    //
-                                    //            console.log();
-                                    //            // Скрыть все ".hint-select"
-                                    //            $('.hint-select').removeClass('activate');
-                                    //            _this.parent().find(".hint-select").addClass('activate');
-                                    //        });
-                                    //        //Кнопки Применить фильтр и Фильтровать
-                                    //        $('.btn-apply, .filter-controls .btn,.hint-select').click(function(){
-                                    //            applyFilter();
-                                    //        });
-                                    //    });
-                                    //    //Применям выбранные фильтра
-                                    //    function applyFilter(){
-                                    //        var attributes = {};
-                                    //        //Находим все выбраные атрибуты чекбоксы и сохраняем значения
-                                    //        $('.attribute-checkbox.selected').each(function(){
-                                    //            if (attributes[$(this).data("sys_title")] == undefined)
-                                    //            {
-                                    //                attributes[$(this).data("sys_title")]=[];
-                                    //                var index = attributes[$(this).data("sys_title")].length;
-                                    //            }
-                                    //            else {
-                                    //                var index = attributes[$(this).data("sys_title")].length;
-                                    //
-                                    //            }
-                                    //            attributes[$(this).data("sys_title")][index] = $(this).data("value");
-                                    //        });
-                                    //        //Склеиваем все значения для каждого атрибута чекбокса
-                                    //        var filters = {};
-                                    //        $.each( attributes, function( key, values ) {
-                                    //            filters[key]=implode('-or-',values);
-                                    //        });
-                                    //        //Добавляем атрибуты-диапазоны
-                                    //        $('.attribute-range').each(function(){
-                                    //            var sys_title = $(this).data("sys_title");
-                                    //            var $slider = $(this).find('.ui-slider');
-                                    //            if ($slider.slider("option", "min") < $slider.slider("option", "values")[0] ||
-                                    //                $slider.slider("option", "max") > $slider.slider("option", "values")[1] )
-                                    //                filters[sys_title] = implode('-', $(this).find('.ui-slider').slider("option", "values"));
-                                    //        });
-                                    //        //console.log(filters); проверка
-                                    //        //Собираем строку фильтра
-                                    //        var filter = '';
-                                    //        $.each(filters, function (key, values) {
-                                    //            if (filter.length == 0)
-                                    //                filter += key + '-' + values;
-                                    //            else
-                                    //                filter += '-with-' + key + '-' + values;
-                                    //        });
-                                    //        console.log(filters); //проверка
-                                    //        console.log(filter); //проверка
-                                    //        if ($('.attribute-checkbox.selected').length == 1 && $('.attribute-checkbox.selected').data('sys_title') == 'inset') {
-                                    //            self.location =  $('.attribute-checkbox.selected a').attr('href');
-                                    //        }else{
-                                    //            //Открываем фильтр
-                                    //
-                                    //                    <!--            -->        //            self.location = '//' + filter;
-                                    //        }
-                                    //    }
-                                    //    function implode( glue, pieces ) {  // Join array elements with a string
-                                    //        return ( ( pieces instanceof Array ) ? pieces.join ( glue ) : pieces );
-                                    //    }
-
-                                </script>
 
                             </div>
 
@@ -686,39 +495,6 @@
                     </div>
 
                 </div>
-
-                <script>
-                    // Выравнивание блоков сеткой
-                    $(function() {
-                        setTimeout(function() {
-                            if ($(window).width() > 639) {
-                                smartColumnsTest($('.products-list'), $('.product-block'), 304);
-                            } else {
-                                smartColumnsTest($('.products-list'), $('.product-block'), 150);
-                            }
-                        }, 1000);
-
-                        $(window).resize(function() {
-                            if ($(window).width() > 639) {
-                                smartColumnsTest($('.products-list'), $('.product-block'), 304);
-                            } else {
-                                smartColumnsTest($('.products-list'), $('.product-block'), 150);
-                            }
-                        });
-
-                        $('.btn.fabric-selection').click(function() {
-                            if ($('.filter-block').css('display') == 'none') {
-                                $('.filter-block').fadeIn(300);
-                            } else {
-                                $('.filter-block').fadeOut(300);
-                            }
-                        });
-
-
-                        page = 1;
-                    });
-
-                </script>
             </div>
         </div>
         <!---->
@@ -867,6 +643,9 @@
 
 
     <script type="text/javascript" src="./tmp/cache/js/d90eb05698f7537d1c9f463dff4a846a.js"></script>
+
+    <script type="text/javascript" src="./js/scripts.js"></script>
+    
     <div class="forms" style="display: none">
         <div id="checkoutDialog" title="Корзина">
             <div id="checkoutDialogContent"></div>
@@ -882,13 +661,6 @@
                                 <div fnx="true" class="column-left">
                                     <div id="guirow_C2WB3F" class="control-group">
                                         <div class="controls">
-                                            <script>
-                                                $(function() {
-                                                    $('#firstname').styler();
-
-                                                });
-
-                                            </script>
 
 
                                             <input class="form-control firstname" type="text" name="firstname" id="firstname" placeholder="Имя">
@@ -898,13 +670,6 @@
                                     </div>
                                     <div id="guirow_uAjucJ" class="control-group">
                                         <div class="controls">
-                                            <script>
-                                                $(function() {
-                                                    $('#cellphone').styler();
-
-                                                });
-
-                                            </script>
 
 
                                             <input class="form-control cellphone" type="text" name="cellphone" id="cellphone">
@@ -912,15 +677,6 @@
 
                                         </div>
                                     </div>
-                                    <script type="text/javascript">
-                                        $(function() {
-                                            $("#callbackForm input[name=cellphone]").inputmask({
-                                                mask: "+38 (099) 999 99 99",
-                                                clearMaskOnLostFocus: false
-                                            });
-                                        })
-
-                                    </script>
                                 </div>
                                 <div fnx="true" class="column-right">
                                     <div fnx="true" class="btn btn-send"><button class="btn" type="submit" value="Жду звонка">
@@ -934,18 +690,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        (function($, d) {
-            $.each(readyQ, function(i, f) {
-                $(f)
-            });
-            $.each(bindReadyQ, function(i, f) {
-                $(d).bind("ready", f)
-            })
-        })(jQuery, document)
-
-    </script>
 </body>
 
 </html>

@@ -14,32 +14,6 @@
 <!--<![endif]-->
 
 <head>
-    <script>
-        (function(w, d, u) {
-            w.readyQ = [];
-            w.bindReadyQ = [];
-
-            function p(x, y) {
-                if (x == "ready") {
-                    w.bindReadyQ.push(y);
-                } else {
-                    w.readyQ.push(x);
-                }
-            };
-            var a = {
-                ready: p,
-                bind: p
-            };
-            w.$ = w.jQuery = function(f) {
-                if (f === d || f === u) {
-                    return a
-                } else {
-                    p(f)
-                }
-            }
-        })(window, document)
-
-    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no user-scalable=no">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="author" content="Alex Siritsa" />
@@ -334,63 +308,6 @@
 
         <div class="clear"></div>
 
-        <script>
-            $(document).ready(function() {
-                $('.logo').addClass('active');
-
-                $('.langs a.active').click(function() {
-                    if ($('.langs a.hiden').css('display') == 'none') {
-                        $('.langs a.hiden').fadeIn(350);
-                    } else {
-                        $('.langs a.hiden').fadeOut(200);
-                    }
-
-                    return false;
-                });
-
-                jQuery(".main-paralax>img").parallax({
-                        mousemove: jQuery(".parallax-wrapper")
-                    }, // Options
-                    {
-                        xparallax: '86px',
-                        yparallax: '0',
-                        xorigin: 0,
-                        yorigin: 0
-                    }, // Layer 1
-                    {
-                        xparallax: '145px',
-                        yparallax: '0',
-                        xorigin: 0,
-                        yorigin: 0
-                    }, // Layer 2
-                    {
-                        xparallax: '30px',
-                        yparallax: '0',
-                        xorigin: 0,
-                        yorigin: 0
-                    }, // Layer 3
-                    {
-                        xparallax: '110px',
-                        yparallax: '0',
-                        xorigin: 0,
-                        yorigin: 0
-                    }, // Layer 4
-                    {
-                        xparallax: '50px',
-                        yparallax: '0',
-                        xorigin: 0,
-                        yorigin: 0
-                    }, // Layer 5
-                    {
-                        xparallax: '200px',
-                        yparallax: '0',
-                        xorigin: 0,
-                        yorigin: 0
-                    } // Layer 6
-                );
-            });
-
-        </script>
         <div class="clear"></div>
 
         <div class="content-wrapper">
@@ -545,33 +462,6 @@
                             </div>
                         </div>
 
-
-                        <script>
-                            $(document).ready(function() {
-                                var owl = $('.owl-carousel.main-slider').owlCarousel({
-                                    center: true,
-                                    items: 1,
-                                    loop: true,
-                                    autoplay: true,
-                                    autoplayTimeout: 5000,
-                                    autoplaySpeed: 1200,
-                                    autoplayHoverPause: true,
-                                    nav: true,
-                                    pagination: false,
-                                    dotData: false,
-                                    navSpeed: 1200,
-                                    onInitialized: function(e) {
-                                        $('.slider-counter').text('1/' + this.items().length)
-                                        console.log();
-                                    }
-                                });
-
-                                owl.on('changed.owl.carousel', function(e) {
-                                    $('.slider-counter').text(++e.page.index + '/' + e.item.count)
-                                });
-                            });
-
-                        </script>
                         <!-- Новинки и акции -->
                         <div class="newitems-and-sale" data-clickable-content>
                             <div class="left-block">
@@ -668,24 +558,6 @@
                                         </div>
                                     </div>
 
-                                    <script>
-                                        $(document).ready(function() {
-                                            var owl = $('.owl-carousel.banner-slider').owlCarousel({
-                                                center: true,
-                                                items: 1,
-                                                loop: true,
-                                                autoplay: true,
-                                                autoplayTimeout: 5000,
-                                                autoplaySpeed: 1200,
-                                                autoplayHoverPause: true,
-                                                nav: true,
-                                                pagination: false,
-                                                dotData: false,
-                                                navSpeed: 1200,
-                                            });
-                                        });
-
-                                    </script>
                                 </div>
                             </div>
 
@@ -982,6 +854,8 @@
 
     <script type="text/javascript" src="./tmp/cache/js/c315fe8267e01dc9616ab74cfbadc68f.js"></script>
 
+    <script type="text/javascript" src="./js/scripts.js"></script>
+
     <div class="forms" style="display: none">
         <div id="checkoutDialog" title="Корзина">
             <div id="checkoutDialogContent">
@@ -1080,13 +954,6 @@
                                     </div>
                                     <div id="guirow_Ng7xtj" class="control-group">
                                         <div class="controls">
-                                            <script>
-                                                $(function() {
-                                                    $('#cellphone').styler();
-
-                                                });
-
-                                            </script>
 
 
                                             <input class="form-control cellphone" type="text" name="cellphone" id="cellphone">
@@ -1094,15 +961,6 @@
 
                                         </div>
                                     </div>
-                                    <script type="text/javascript">
-                                        $(function() {
-                                            $("#callbackForm input[name=cellphone]").inputmask({
-                                                mask: "+38 (099) 999 99 99",
-                                                clearMaskOnLostFocus: false
-                                            });
-                                        })
-
-                                    </script>
                                 </div>
                                 <div fnx="true" class="column-right">
                                     <div fnx="true" class="btn btn-send"><button class="btn" type="submit" value="Жду звонка">
@@ -1116,19 +974,6 @@
             </div>
         </div>
     </div>
-
-
-    <script>
-        (function($, d) {
-            $.each(readyQ, function(i, f) {
-                $(f)
-            });
-            $.each(bindReadyQ, function(i, f) {
-                $(d).bind("ready", f)
-            })
-        })(jQuery, document)
-
-    </script>
 </body>
 
 </html>

@@ -14,32 +14,6 @@
 <!--<![endif]-->
 
 <head>
-    <script>
-        (function(w, d, u) {
-            w.readyQ = [];
-            w.bindReadyQ = [];
-
-            function p(x, y) {
-                if (x == "ready") {
-                    w.bindReadyQ.push(y);
-                } else {
-                    w.readyQ.push(x);
-                }
-            };
-            var a = {
-                ready: p,
-                bind: p
-            };
-            w.$ = w.jQuery = function(f) {
-                if (f === d || f === u) {
-                    return a
-                } else {
-                    p(f)
-                }
-            }
-        })(window, document)
-
-    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no user-scalable=no">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="author" content="Alex Siritsa" />
@@ -303,24 +277,6 @@
 
         <div class="clear"></div>
 
-        <script>
-            $(document).ready(function() {
-                $('.logo').addClass('active');
-
-                $('.langs a.active').click(function() {
-                    if ($('.langs a.hiden').css('display') == 'none') {
-                        $('.langs a.hiden').fadeIn(350);
-                    } else {
-                        $('.langs a.hiden').fadeOut(200);
-                    }
-
-                    return false;
-                });
-
-            });
-
-
-        </script>
         <div class="clear"></div>
 
         <!---->
@@ -342,50 +298,6 @@
                                             <noindex class="sorting-item">
                                                 <div class="selections-wrapper">
                                                     <div class="list-title">Цена</div>
-                                                    <script>
-                                                        $(function() {
-                                                            $("#price-range").slider({
-                                                                range: true,
-                                                                min: 129,
-                                                                max: 312,
-                                                                values: [129, 312],
-                                                                slide: function(event, ui) {
-                                                                    $("#priceFrom").val(ui.values[0]);
-                                                                    $("#priceTo").val(ui.values[1]);
-                                                                },
-                                                                stop: function(event, ui) {
-                                                                    applyBtn();
-                                                                }
-                                                            });
-
-                                                            $("#priceFrom").val($("#price-range").slider("values", 0));
-                                                            $("#priceTo").val($("#price-range").slider("values", 1));
-
-                                                            $('#priceFrom').change(function() {
-                                                                var value = parseInt($(this).val());
-                                                                if (isNaN(value) == false)
-                                                                    $("#price-range").slider('values', 0, value);
-                                                            });
-
-                                                            $('#priceTo').change(function() {
-                                                                var value = parseInt($(this).val());
-                                                                if (isNaN(value) == false)
-                                                                    $("#price-range").slider('values', 1, value);
-                                                            });
-
-                                                            $("#priceFrom").keyup(function(event) {
-                                                                if (event.keyCode == 13) {
-                                                                    applyBtn();
-                                                                }
-                                                            });
-                                                            $("#priceTo").keyup(function(event) {
-                                                                if (event.keyCode == 13) {
-                                                                    applyBtn();
-                                                                }
-                                                            });
-                                                        });
-
-                                                    </script>
 
                                                     <div class="attribute-range" data-sys_title="price">
                                                         <div id="price-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false">
@@ -471,61 +383,6 @@
                                     <div class="btn filter">
                                         Фильтровать </div>
                                 </div>
-
-
-                                <script>
-                                    $(document).ready(function() {
-                                        $('select').styler({
-                                            fileBrowse: 'Выбрать',
-                                            onSelectOpened: function() {}
-                                        });
-
-                                        // Вывод активных пунктов фильтра
-                                        $(this).find(".jq-selectbox__dropdown li").removeClass('sel selected');
-                                        $(this).find('select .selected').addClass('sel selected');
-
-                                        $('.sorting-block .list-style noindex select').each(function() {
-                                            var text = $(this).find('.selected').html();
-                                            $(this).parent('div').find('.jq-selectbox__select').find('.jq-selectbox__select-text').html(text);
-                                        });
-
-                                        $('.attribute-checkbox.type-color').click(function() {
-                                            if ($(this).hasClass('selected')) {
-                                                $(this).removeClass('selected');
-                                            } else {
-                                                $(this).addClass('selected');
-                                            }
-
-                                            applyBtn();
-                                        });
-
-                                        // применить фильтр
-                                        $(".btn.filter").click(function() {
-                                            applyFilter();
-                                        });
-
-                                        $(".jq-selectbox__dropdown ul li").click(function() {
-                                            $(this).parent('ul').find('li').removeClass('selected');
-                                            $(this).parent('ul').find('li').attr('data-jqfs-class', 'attribute-checkbox');
-                                            $(this).parent('ul').parent('.jq-selectbox__dropdown').parent('.jq-selectbox').find('.select-styler').find('option').removeClass('selected');
-
-                                            $(this).addClass('selected');
-
-                                            applyBtn();
-                                        });
-
-
-                                        function implode(glue, pieces) { // Join array elements with a string
-                                            return ((pieces instanceof Array) ? pieces.join(glue) : pieces);
-                                        }
-                                    });
-
-                                    // Появление кнопки "Применить"
-                                    function applyBtn() {
-                                        $('.btn.filter').fadeIn(300);
-                                    }
-
-                                </script>
 
                             </div>
 
@@ -1172,102 +1029,6 @@
                 <div class="clear">
 
                 </div>
-
-
-                <script type="text/javascript">
-                    $(document).ready(function() {
-                        setTimeout(function() {
-                            smartColumnsTest($('.design-list'), $('.lightbox'), 304);
-                        }, 400);
-
-                        $(window).resize(function() {
-                            smartColumnsTest($('.design-list'), $('.lightbox'), 304);
-                        });
-
-                        $('.lightbox').fancybox({
-                            openEffect: 'fade',
-                            closeEffect: 'fade',
-                            nextEffect: 'elastic',
-                            prevEffect: 'elastic',
-                            padding: 0,
-                            margin: [20, 20, 20, 20],
-                            helpers: {
-                                overlay: {
-                                    locked: false
-                                }
-                            }
-                        });
-
-                        var $materialItem = $('.material-item');
-                        $materialItem.each(function() {
-                            var $this = $(this);
-                            if ($this.hasClass('active')) {
-                                var magnifierImage = $this.find(".magnifier-image").data('magnifierImage'),
-                                    $magnifierContainer = $(".magnifier-container"),
-                                    $contentTexture = $magnifierContainer.next();
-
-                                if ($contentTexture.find(".base-img").attr("src") != '') {
-                                    $magnifierContainer.html('<div class="image-circle"><img src="' + magnifierImage + '" /></div>');
-                                } else {
-                                    $magnifierContainer.hide();
-                                }
-                            }
-                        });
-
-                        $materialItem.click(function() {
-                            // меняем накладываемые сверху текстуры
-                            var image = $(this).find('.image'),
-                                texture_type = image.attr('data-color-type'),
-                                texture_image = image.attr('data-texture-image'),
-                                magnifierImage = $(this).find('.magnifier-image').data('magnifierImage'),
-                                $magnifierContainer = $(".magnifier-container");
-
-                            // помечаем выбранный
-                            $("[data-active-type=" + texture_type + "]").removeClass('active');
-                            $(this).addClass('active');
-
-                            // изменяем базовое изображение изображению
-                            $('.base-img').attr('src', texture_image);
-                            $magnifierContainer.html('<div class="image-circle"><img src="' + magnifierImage + '" /></div>');
-                        });
-
-                        //Прячем вкладку если список пустой
-                        $('.targetMaterials').closest('li').hide();
-
-                        // показываем Ткани
-                        var $countPr = $("#countPr");
-                        $countPr.keypress(function(e) {
-                            if (e.ctrlKey || e.altKey || e.metaKey) {
-                                return;
-                            }
-
-                            var chr = getChar(e);
-
-                            if (chr == null) {
-                                return;
-                            }
-
-                            if (chr < '0' || chr > '9') {
-                                return false;
-                            }
-                        });
-
-                        function getChar(event) {
-                            if (event.which == null) {
-                                if (event.keyCode < 32) return null;
-                                return String.fromCharCode(event.keyCode) // IE
-                            }
-
-                            if (event.which != 0 && event.charCode != 0) {
-                                if (event.which < 32) return null;
-                                return String.fromCharCode(event.which) // остальные
-                            }
-
-                            return null; // специальная клавиша
-                        }
-                    });
-
-                </script>
             </div>
         </div>
         <!---->
@@ -1416,6 +1177,9 @@
 
 
     <script type="text/javascript" src="./tmp/cache/js/d90eb05698f7537d1c9f463dff4a846a.js"></script>
+
+    <script type="text/javascript" src="./js/scripts.js"></script>
+    
     <div class="forms" style="display: none">
         <div id="checkoutDialog" title="Корзина">
             <div id="checkoutDialogContent"></div>
@@ -1431,13 +1195,6 @@
                                 <div fnx="true" class="column-left">
                                     <div id="guirow_C2WB3F" class="control-group">
                                         <div class="controls">
-                                            <script>
-                                                $(function() {
-                                                    $('#firstname').styler();
-
-                                                });
-
-                                            </script>
 
 
                                             <input class="form-control firstname" type="text" name="firstname" id="firstname" placeholder="Имя">
@@ -1447,13 +1204,6 @@
                                     </div>
                                     <div id="guirow_uAjucJ" class="control-group">
                                         <div class="controls">
-                                            <script>
-                                                $(function() {
-                                                    $('#cellphone').styler();
-
-                                                });
-
-                                            </script>
 
 
                                             <input class="form-control cellphone" type="text" name="cellphone" id="cellphone">
@@ -1461,15 +1211,6 @@
 
                                         </div>
                                     </div>
-                                    <script type="text/javascript">
-                                        $(function() {
-                                            $("#callbackForm input[name=cellphone]").inputmask({
-                                                mask: "+38 (099) 999 99 99",
-                                                clearMaskOnLostFocus: false
-                                            });
-                                        })
-
-                                    </script>
                                 </div>
                                 <div fnx="true" class="column-right">
                                     <div fnx="true" class="btn btn-send"><button class="btn" type="submit" value="Жду звонка">
@@ -1483,18 +1224,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        (function($, d) {
-            $.each(readyQ, function(i, f) {
-                $(f)
-            });
-            $.each(bindReadyQ, function(i, f) {
-                $(d).bind("ready", f)
-            })
-        })(jQuery, document)
-
-    </script>
 </body>
 
 </html>
