@@ -386,3 +386,40 @@
             position: relative;
             z-index: 5;
         }
+
+
+.reviews-list-bl {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.reviews-list-bl-img {
+    border-radius: 50%;
+    background: #fff;
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+}
+
+.reviews-list-bl-right {
+    flex: 1;
+}
+
+.reviews-list-bl-name {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+@media(max-width: 767px){
+    .reviews-list-bl {
+        flex-direction: column;
+    }
+    .reviews-list-bl-right {
+        text-align: center;
+        margin-top: 10px;
+    }
+}
