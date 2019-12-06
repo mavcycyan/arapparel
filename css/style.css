@@ -413,6 +413,10 @@
     font-weight: 700;
     margin-bottom: 7px;
 }
+.reviews-list-bl-name .date {
+    font-style: italic;
+    font-weight: 400;
+}
 
 @media(max-width: 767px){
     .reviews-list-bl {
